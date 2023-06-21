@@ -36,7 +36,7 @@ class MainCard extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 const Text(
-                  '🪙 ' + '54900',
+                  '🪙 ' + '50000',
                   style: TextStyle(
                       fontSize: 30,
                       color: Color.fromRGBO(255, 255, 255, 1),
