@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import './main_card.dart';
 import './income_summary_card.dart';
 import './add_new_expense.dart';
 import './expense.dart';
+import './transaction_list.dart';
 import './expense_inputs.dart';
 
 void main() {
@@ -11,7 +11,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  List<Expense> expenseList = [];
+  List<Expense> expenseList = [
+    Expense(
+      expId: '1',
+      expItem: 'Mango Shake',
+      expAmount: 120,
+      expDate: DateTime.now(),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +54,7 @@ class MyApp extends StatelessWidget {
           SliverToBoxAdapter(
             child: Container(
               width: double.infinity,
-              margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+              margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
               child: Column(
                 children: [
                   Row(
@@ -67,12 +74,57 @@ class MyApp extends StatelessWidget {
                     ],
                   ),
                   //ExpenseInput(),
-                  /*Container(
-                    child: ListTile(
-                      title: Text('Hello'),
-                      subtitle: Text('World'),
-                    ),
-                  )*/
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TransactionList(expenseList),
+                  Divider(
+                    thickness: 1,
+                  ),
+                  TransactionList(expenseList),
+                  Divider(
+                    thickness: 1,
+                  ),
+                  TransactionList(expenseList),
+                  Divider(
+                    thickness: 1,
+                  ),
+                  TransactionList(expenseList),
+                  Divider(
+                    thickness: 1,
+                  ),
+                  TransactionList(expenseList),
+                  Divider(
+                    thickness: 1,
+                  ),
+                  TransactionList(expenseList),
+                  Divider(
+                    thickness: 1,
+                  ),
+                  TransactionList(expenseList),
+                  Divider(
+                    thickness: 1,
+                  ),
+                  TransactionList(expenseList),
+                  Divider(
+                    thickness: 1,
+                  ),
+                  TransactionList(expenseList),
+                  Divider(
+                    thickness: 1,
+                  ),
+                  TransactionList(expenseList),
+                  Divider(
+                    thickness: 1,
+                  ),
+                  TransactionList(expenseList),
+                  Divider(
+                    thickness: 1,
+                  ),
+                  TransactionList(expenseList),
+                  Divider(
+                    thickness: 1,
+                  ),
                 ],
               ),
             ),
