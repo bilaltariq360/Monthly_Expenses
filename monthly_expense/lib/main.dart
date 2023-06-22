@@ -7,12 +7,11 @@ import './transaction_list.dart';
 import './expense_inputs.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({super.key});
-
+  const MyApp({super.key});
   @override
   State<MyApp> createState() => _MyAppState();
 }
@@ -20,36 +19,25 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   List<Expense> expenseList = [
     Expense(
-      expId: '1',
-      expItem: 'Mango Shake',
-      expAmount: 120,
-      expDate: DateTime.now(),
-    ),
-    Expense(
-      expId: '1',
-      expItem: 'Mango Shake',
-      expAmount: 120,
-      expDate: DateTime.now(),
-    ),
-    Expense(
-      expId: '1',
-      expItem: 'Mango Shake',
-      expAmount: 120,
-      expDate: DateTime.now(),
-    ),
-    Expense(
-      expId: '1',
-      expItem: 'Mango Shake',
-      expAmount: 120,
-      expDate: DateTime.now(),
-    ),
-    Expense(
-      expId: '1',
-      expItem: 'Mango Shake',
+      expId: DateTime.now().toString(),
+      expItem: 'Pratha Anda',
       expAmount: 120,
       expDate: DateTime.now(),
     ),
   ];
+
+  void _addExpense() {
+    setState(() {
+      expenseList.add(
+        Expense(
+          expId: DateTime.now().toString(),
+          expItem: 'Pratha Anda',
+          expAmount: 120,
+          expDate: DateTime.now(),
+        ),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,42 +85,43 @@ class _MyAppState extends State<MyApp> {
             ),
           ],
         ),
-        body:
-            CustomScrollView(physics: const BouncingScrollPhysics(), slivers: [
-          SliverToBoxAdapter(
-            child: Container(
-              width: double.infinity,
-              margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const MainCard(),
-                      Column(
-                        children: [
-                          const IncomSummaryCard(),
-                          GestureDetector(
-                            onTap: () {},
-                            child: const AddNewExpense(),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  //ExpenseInput(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  ...expenseList.map((exp) {
-                    return TransactionList(exp);
-                  }),
-                ],
+        body: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            SliverToBoxAdapter(
+              child: Container(
+                width: double.infinity,
+                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const MainCard(),
+                        Column(
+                          children: [
+                            const IncomSummaryCard(),
+                            GestureDetector(
+                              onTap: _addExpense,
+                              child: const AddNewExpense(),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ...expenseList.map((exp) {
+                      return TransactionList(exp);
+                    }),
+                  ],
+                ),
               ),
             ),
-          ),
-        ]),
+          ],
+        ),
       ),
     );
   }

@@ -31,7 +31,7 @@ class MainCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Rs. 50000',
+                  'Rs. 50,000',
                   style: TextStyle(
                       fontSize: 30,
                       color: Color.fromRGBO(255, 255, 255, 1),
