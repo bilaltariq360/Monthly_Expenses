@@ -4,7 +4,6 @@ import './income_summary_card.dart';
 import './add_new_expense.dart';
 import './expense.dart';
 import './transaction_list.dart';
-import './expense_inputs.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,22 +16,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<Expense> expenseList = [
-    Expense(
-      expId: DateTime.now().toString(),
-      expItem: 'Pratha Anda',
-      expAmount: 120,
-      expDate: DateTime.now(),
-    ),
-  ];
+  List<Expense> expenseList = [];
 
-  void _addExpense() {
+  void _addExpense(String expItem, int expAmount) {
     setState(() {
       expenseList.add(
         Expense(
           expId: DateTime.now().toString(),
-          expItem: 'Pratha Anda',
-          expAmount: 120,
+          expItem: expItem,
+          expAmount: expAmount,
           expDate: DateTime.now(),
         ),
       );
@@ -67,18 +59,18 @@ class _MyAppState extends State<MyApp> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const CircleAvatar(
-                  radius: 15,
-                  backgroundImage: AssetImage('assets/images/My_Pic.png'),
+                const Text(
+                  'Bilal Tariq',
+                  style: TextStyle(
+                    fontFamily: 'MainFont',
+                    color: Color.fromRGBO(255, 255, 255, 0.802),
+                  ),
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: const Text(
-                    'Bilal Tariq',
-                    style: TextStyle(
-                      fontFamily: 'MainFont',
-                      color: Color.fromRGBO(255, 255, 255, 0.802),
-                    ),
+                  child: const CircleAvatar(
+                    radius: 15,
+                    backgroundImage: AssetImage('assets/images/My_Pic.png'),
                   ),
                 ),
               ],
@@ -102,10 +94,7 @@ class _MyAppState extends State<MyApp> {
                         Column(
                           children: [
                             const IncomSummaryCard(),
-                            GestureDetector(
-                              onTap: _addExpense,
-                              child: const AddNewExpense(),
-                            ),
+                            AddNewExpense(_addExpense),
                           ],
                         ),
                       ],

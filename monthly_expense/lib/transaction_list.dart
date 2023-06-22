@@ -3,9 +3,9 @@ import 'package:intl/intl.dart';
 import 'expense.dart';
 
 class TransactionList extends StatelessWidget {
-  final Expense expenseList;
+  final Expense newEexpense;
 
-  TransactionList(this.expenseList, {super.key});
+  TransactionList(this.newEexpense, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,19 +19,19 @@ class TransactionList extends StatelessWidget {
             backgroundColor: const Color.fromARGB(255, 0, 189, 167),
             radius: 25,
             child: Text(
-              expenseList.expAmount.toString(),
+              newEexpense.expAmount.toString(),
               style: const TextStyle(
                 color: Color.fromARGB(255, 224, 255, 251),
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          title: Text(expenseList.expItem),
+          title: Text(newEexpense.expItem),
           subtitle: Text(
-            DateFormat.yMMMMEEEEd().format(expenseList.expDate),
+            DateFormat.yMMMMEEEEd().format(newEexpense.expDate),
           ),
           trailing: Text(
-            DateFormat.jm().format(expenseList.expDate),
+            DateFormat.jm().format(newEexpense.expDate),
           ),
         ),
       ],

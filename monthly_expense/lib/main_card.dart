@@ -9,7 +9,7 @@ class MainCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      elevation: 20,
+      elevation: 3,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         width: 200,

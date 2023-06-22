@@ -9,7 +9,7 @@ class IncomSummaryCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      elevation: 20,
+      elevation: 3,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
         width: 156,
