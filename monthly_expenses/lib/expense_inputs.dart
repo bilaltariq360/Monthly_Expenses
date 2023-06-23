@@ -41,10 +41,11 @@ class _ExpenseInputState extends State<ExpenseInput> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(physics: const BouncingScrollPhysics(), slivers: [
-      SliverToBoxAdapter(
-        child: Container(
-          margin: const EdgeInsets.fromLTRB(25, 25, 25, 10),
+    return Container(
+      margin: const EdgeInsets.fromLTRB(25, 25, 25, 0),
+      child:
+          Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Container(
           child: Column(children: [
             TextField(
               controller: expItem,
@@ -147,67 +148,68 @@ class _ExpenseInputState extends State<ExpenseInput> {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 30),
-                  width: 150,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                        side: const BorderSide(color: Colors.black),
-                      ),
-                      elevation: 0,
-                    ),
-                    child: const Text(
-                      'Cancel',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 30),
-                  width: 150,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (expAmount.text != '' &&
-                          int.parse(expAmount.text) > 0 &&
-                          expItem.text != '' &&
-                          expDate != null) {
-                        widget.newExpense(expItem.text,
-                            int.parse(expAmount.text), expDate, isPaid);
-                        Navigator.of(context).pop();
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            50), // Set the corner radius here
-                      ),
-                      elevation: 0,
-                    ),
-                    child: const Text(
-                      'Add',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ),
-                ),
-              ],
-            )
           ]),
         ),
-      ),
-    ]);
+        SizedBox(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 20),
+                width: 150,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      side: const BorderSide(color: Colors.black),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Text(
+                    'Cancel',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                width: 150,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (expAmount.text != '' &&
+                        int.parse(expAmount.text) > 0 &&
+                        expItem.text != '' &&
+                        expDate != null) {
+                      widget.newExpense(expItem.text, int.parse(expAmount.text),
+                          expDate, isPaid);
+                      Navigator.of(context).pop();
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                          50), // Set the corner radius here
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Text(
+                    'Add',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        )
+      ]),
+    );
   }
 }
